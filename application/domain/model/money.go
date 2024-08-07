@@ -32,20 +32,12 @@ func (m Money) IsGreaterThan(money Money) bool {
 	return m.Amount.Cmp(money.Amount) > 0
 }
 
-func Add(originMoney, targetMoney Money) Money {
-	return Money{Amount: new(big.Int).Add(originMoney.Amount, targetMoney.Amount)}
-}
-
 func (m Money) Minus(money Money) Money {
 	return Money{Amount: new(big.Int).Sub(m.Amount, money.Amount)}
 }
 
 func (m Money) Plus(money Money) Money {
 	return Money{Amount: new(big.Int).Add(m.Amount, money.Amount)}
-}
-
-func Subtract(originMoney, targetMoney Money) Money {
-	return Money{Amount: new(big.Int).Sub(originMoney.Amount, targetMoney.Amount)}
 }
 
 func (m Money) Negate() Money {
