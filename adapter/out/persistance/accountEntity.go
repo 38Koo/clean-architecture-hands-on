@@ -1,7 +1,7 @@
 package adapterOutPersistance
 
 type AccountEntity struct {
-	ID uint `gorm:"primaryKey;autoIncrement"`
+	ID int32 `gorm:"primaryKey;autoIncrement"`
 }
 
 func (a AccountEntity) AccountTBL() string {
