@@ -10,7 +10,7 @@ type Account struct {
 	ActivityWindow  ActivityWindow
 }
 
-func WithoutId(baseLineBalance Money, activityWindow ActivityWindow) Account {
+func NewAccountWithoutId(baseLineBalance Money, activityWindow ActivityWindow) Account {
 	return Account{
 		Id:              nil,
 		BaseLineBalance: baseLineBalance,
@@ -18,7 +18,7 @@ func WithoutId(baseLineBalance Money, activityWindow ActivityWindow) Account {
 	}
 }
 
-func WithId(accountId *AccountId, baseLineBalance Money, activityWindow ActivityWindow) Account {
+func NewAccountWithId(accountId *AccountId, baseLineBalance Money, activityWindow ActivityWindow) Account {
 	return Account{
 		Id:              accountId,
 		BaseLineBalance: baseLineBalance,
