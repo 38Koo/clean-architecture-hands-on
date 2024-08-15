@@ -12,7 +12,7 @@ func (am *AccountMapper) MapToDomainEntity(account *AccountEntity, activities []
 	
 	var accountId model.AccountId = model.AccountId(account.ID)
 
-	return model.WithId(
+	return model.NewAccountWithId(
 		&accountId,
 		baselineBalance,
 		am.MapToActivityWindow(activities),
