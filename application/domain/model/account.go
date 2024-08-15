@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 type AccountId int32
 
@@ -35,7 +37,7 @@ func (a Account) CalculateBalance() Money {
 	return moneyFactory.Add(a.BaseLineBalance, a.ActivityWindow.CalculateBalance(*a.Id))
 }
 
-func (a Account) Withdraw(money Money, targetAccountId AccountId) bool {
+func (a *Account) Withdraw(money Money, targetAccountId AccountId) bool {
 	if !a.mayWithdrawal(money) {
 		return false
 	}
@@ -50,7 +52,7 @@ func (a Account) mayWithdrawal(money Money) bool {
 	return moneyFactory.Add(a.CalculateBalance(), money.Negate()).IsPositiveOrZero()
 }
 
-func (a Account) Deposit(money Money, sourceAccountId AccountId) bool {
+func (a *Account) Deposit(money Money, sourceAccountId AccountId) bool {
 	deposit := NewActivity(*a.Id, sourceAccountId, *a.Id, time.Now(), money)
 	a.ActivityWindow.AddActivity(deposit)
 	return true
